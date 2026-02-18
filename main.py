@@ -23,6 +23,8 @@ MIC_DEVICE_INDEX = 1
 transcript_buffer = []
 MAX_BUFFER_LINES = 20
 last_call_time = 0
+MIN_WORDS = 12
+COOLDOWN_SECONDS = 15
 
 def add_to_buffer(text):
     transcript_buffer.append(text)
@@ -31,13 +33,11 @@ def add_to_buffer(text):
 
 def handle_transcript(full_text):
     global last_call_time
-    MIN_WORDS = 12
-    COOLDOWN_SECONDS = 15
     if len(full_text.split()) < MIN_WORDS:
-        print(" Not enough context yet.")
+        print("Not enough context yet.")
         return
     if time.time() - last_call_time < COOLDOWN_SECONDS:
-        print("Cooldown active.")
+        print("⏳ Cooldown active.")
         return
     last_call_time = time.time()
 

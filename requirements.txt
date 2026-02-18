@@ -1,0 +1,8 @@
+#pip freeze > requirements.txt
+
+websockets
+pyaudio
+python-dotenv 
+psycopg2-binary 
+google-genai 
+PyMuPDF
